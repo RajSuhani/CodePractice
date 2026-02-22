@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class Solution {
+public:
+    int binaryGap(int n) {
+        int last = -1;   
+        int pos = 0;    
+        int ans = 0;
+
+        while (n > 0) {
+            if (n & 1) {   
+                if (last != -1) {
+                    ans = max(ans, pos - last);
+                }
+                last = pos;
+            }
+            n >>= 1;  
+            pos++;
+        }
+
+        return ans;
+    }
+};
+
+int main() {
+    Solution obj;
+
+    int n;
+    cout << "Enter number: ";
+    cin >> n;
+
+    cout << "Binary Gap: " << obj.binaryGap(n) << endl;
+
+    return 0;
+}
